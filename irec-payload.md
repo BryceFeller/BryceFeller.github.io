@@ -41,13 +41,15 @@ To perform the metabolic experiment, the payload requires a highly robust, high-
 <div align="center">
   <img src="Payload_Middle_Compartment.png" alt="Middle Compartment" />
   <br>
-  <i>Figure 4: Middle compartment detailing the primary syringe bodies and aluminum cold block.</i>
+  <i>Figure 4: Middle compartment detailing the primary syringe bodies and fluidics mounting structure.</i>
 </div>
 <br>
 
-The middle compartment is designed to house the core biological experiment and the primary thermal bridge.
-- **Isobaric Fluid Expansion:** To guarantee a strict anaerobic (0% oxygen) environment, the fluidics architecture is designed around a syringe-to-syringe expansion method. The injection volume perfectly translates to the receiving volume ($\Delta V = 0$), relying on isobaric expansion ($P_1 V_1 = P_2 V_2$).
-- **Conductive Thermal Bus:** The cold side of the Peltier system mounts directly to a custom aluminum "Cold Block," which interfaces physically with the syringes to maximize conductive thermal transfer to the fluid.
+The middle compartment houses two distinct fluid pathways to support different experimental constraints while maintaining a strict anaerobic (0% oxygen) environment at 1 atm.
+
+- **Metabolism Pathway (Syringe-to-Syringe):** This closed-loop system utilizes direct isobaric expansion. As the actuator drives the injection syringe, the receiving syringe expands at the exact same rate. The total volume never changes ($\Delta V = 0$), relying on Boyle's Law ($P_1 V_1 = P_2 V_2$) to maintain constant pressure.
+- **Fluorometry Pathway (Pneumatic "Lung"):** Optical readings require a rigid, clear vial. Because injecting incompressible fluid into a sealed, rigid vial displaces compressible air and spikes internal pressure, the system routes the displaced air into a dedicated "lung" syringe. This acts as an expansion chamber, balancing the pressure to prevent seal failure.
+- **Theoretical Thermal Strategy:** While project development halted before the conductive cooling hardware was modeled into this assembly, the thermal control strategy specified a Peltier system and custom aluminum cold block to regulate the syringe fluid temperatures.
 
 ## Fluorometer Integration & Optical Detection
 
@@ -79,9 +81,10 @@ The core scientific objective relied on a fluorometer to measure bacterial metab
 </div>
 <br>
 
-Aerodynamic heating at high velocities necessitated an active cooling loop and strategic insulation strategy.
-- **Forced Convection Exhaust:** The thermal exhaust strategy specifies dual fans to drive forced convection ($Q = hA\Delta T$) across a finned heatsink. This heat is actively vented out of the airframe through targeted exhaust holes.
-- **Aerodynamic Shielding:** The sabot housing features rectangular wall recesses designed to hold high R-value insulation to passively combat aerodynamic heating.
+Aerodynamic heating and internal power dissipation necessitated a robust active cooling loop and strategic insulation strategy.
+- **Thermoelectric Heat Pumping:** Two Peltier modules are mounted vertically on opposite sides of the middle compartment[cite: 6]. The cold sides face inward to chill the biological samples, while the hot sides interface with finned aluminum heatsinks via thermal paste to distribute the extracted energy.
+- **Push-Pull Forced Convection:** To exhaust the waste heat, dual fans are mounted above and below each heatsink in a push-pull configuration. This actively drives air upward across the fins, maximizing the heat transfer rate.
+- **Aerodynamic Sabot Channeling:** The sabot was custom-modeled with specific internal geometry to create dedicated airflow channels. While all other faces feature high R-value insulation recesses to block aerodynamic heating[cite: 8], these uninsulated channels align with external ventilation holes[cite: 7]. This allows the fans to draw cool ambient air into the airframe through the bottom and vent heated air out the top.
 
 ## Avionics Packaging & Integration (Lower Compartment)
 
